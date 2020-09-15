@@ -1,6 +1,7 @@
 let axios = require('axios');
 let Weather = require('../model/Weather');
 const e = require('express');
+const { json } = require('express');
 require('dotenv').config();
 
 
@@ -26,11 +27,17 @@ exports.getWeather = (req,res)=>{
         })
     } else {
         axios.get(url).then((response)=>{
+            let obj = response.data.weather[0];
+            let condition = obj.main;
+            let { temp : temperature  } = response.data.main 
+            let { name : location  } = response.data 
+
             res.render('index',{
-                weather : `It is currently ${response.data.main.temp} C in ${response.data.name}`
+                weather : `It is currently ${temperature} C in ${location} & Condition ${condition}`
                
             })
             
+
         }).catch((error)=>{
             console.log(error)
         });

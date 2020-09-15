@@ -2,7 +2,7 @@
 let express = require('express');
 let app = express();
 let router = require('../src/router')
-
+require('dotenv').config();
 
 
 app.use(express.urlencoded({extended : false}));
@@ -16,7 +16,7 @@ app.set('view engine', 'hbs');
 
 app.use('/',router )
 
-let port = 3000;
+let port = process.env.PORT || 3000;
 app.listen(port, ()=>{
     let arg = "app is listening at port: ";
     console.log(arg , port)
