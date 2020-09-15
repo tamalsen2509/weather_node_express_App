@@ -2,7 +2,7 @@
   "name": "express-weather",
   "version": "1.0.0",
   "description": "an API based weather application that intimate weather report on go!",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
